@@ -288,7 +288,7 @@ def gather_data_for_report(projectID, reportData):
                     relationships.append(fileRelationship)
 
                     # Surfaces the file level evidence to the assocaited package
-                    licenseInfoFromFiles = licenseInfoFromFiles + fileDetail["licenseInfoInFiles"]
+                    licenseInfoFromFiles = licenseInfoFromFiles + fileDetail.get("licenseInfoInFiles", [])
     
                 # Create a hash of the file hashes for PackageVerificationCode 
                 try:
@@ -542,7 +542,7 @@ def manage_unassociated_files(filesNotInInventory, filePathtoID, rootSPDXID, cre
         fileHashes.append(filePathtoID[fileName]["fileSHA1"])
 
         # Surfaces the file level evidence to the assocaited package
-        licenseInfoFromFiles = licenseInfoFromFiles + fileDetails["licenseInfoInFiles"]
+        licenseInfoFromFiles = licenseInfoFromFiles + fileDetails.get("licenseInfoInFiles", [])
   
        # Define the relationship of the file to the package
         fileRelationship = {}
